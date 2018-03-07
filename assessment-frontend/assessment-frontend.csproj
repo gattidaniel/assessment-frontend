@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,7 +18,15 @@
 
   <ItemGroup>
     <!-- Files not to publish (note that the 'dist' subfolders are re-added below) -->
+    <Compile Remove="ClientApp\app\_helpers\**" />
     <Content Remove="ClientApp\**" />
+    <EmbeddedResource Remove="ClientApp\app\_helpers\**" />
+    <None Remove="ClientApp\app\_helpers\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\app\components\_directives\" />
+    <Folder Include="ClientApp\app\components\_guards\" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
