@@ -4,22 +4,24 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
-//import { routing } from './components/app.routing';
 
 import { AppComponent } from './components/app/app.component';
 import { HomeComponent } from './components/home/home.component';
 
 import { AlertComponent } from  './components/_directives/index';
 import { AuthGuard } from './components/_guards/index';
-import { AlertService, AuthenticationService, ClientService } from './components/_services/index';
+import { AlertService, AuthenticationService, ClientService, PolicyService } from './components/_services/index';
 import { LoginComponent } from './components/login/index';
+import { PolicyComponent } from './components/policy/index';
+
 
 @NgModule({
     declarations: [
         AppComponent,
         AlertComponent,
         HomeComponent,
-        LoginComponent
+        LoginComponent,
+        PolicyComponent
     ],
     imports: [
         CommonModule,
@@ -29,15 +31,21 @@ import { LoginComponent } from './components/login/index';
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+            { path: 'policies/:clientId/:clientName', component: PolicyComponent, canActivate: [AuthGuard] },
             { path: 'login', component: LoginComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ],
+    //exports: [
+    //    MatToolbarModule,
+    //    MatButtonModule
+    //],
     providers: [
         AuthGuard,
         AlertService,
         AuthenticationService,
-        ClientService
+        ClientService,
+        PolicyService
     ]
     //,    bootstrap: [AppComponent]
 })

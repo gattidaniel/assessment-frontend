@@ -1,0 +1,24 @@
+<button (click)="goBack()" class="btn btn-default" style="float:right; margin-top:15px">Go back</button>
+
+<div *ngIf="(policies).length > 0">
+    <h3>List of policies associated to user {{this.clientName}}:</h3>
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let policy of policies">
+            <div class="row">
+                <div class="col-md-4">
+                    {{'Amount insured: $' + policy.amountInsured}}
+                </div>
+                <div class="col-md-4">
+                    {{'Inception date: ' + (policy.inceptionDate | date:'MM/dd/yyyy') }}
+                </div>
+                <div class="col-md-4">
+                    {{'Installment payment: ' + policy.installmentPayment}}
+                </div>
+            </div>
+
+        </li>
+    </ul>
+</div>
+<div *ngIf="(policies).length === 0">
+    <h3>There aren't any policy associated to user {{this.clientName}}</h3>
+</div>

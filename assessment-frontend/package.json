@@ -60,6 +60,8 @@
     "zone.js": "0.8.12"
   },
   "dependencies": {
-    "@angular/cli": "^1.7.2"
+    "@angular/cdk": "^5.2.4",
+    "@angular/cli": "^1.7.2",
+    "@angular/material": "^5.2.4"
   }
 }

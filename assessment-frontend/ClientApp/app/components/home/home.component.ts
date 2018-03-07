@@ -13,13 +13,8 @@ export class HomeComponent implements OnInit {
     clients: Clients;
 
     constructor(private clientService: ClientService) {
-        try {
-            if (typeof window !== 'undefined') {
-                this.currentUser = localStorage.getItem('currentUser');
-            }
-        }
-        catch (e) {
-
+        if (typeof window !== 'undefined') {
+            this.currentUser = localStorage.getItem('currentUser');
         }
     }
 
